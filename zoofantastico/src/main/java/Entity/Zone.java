@@ -4,22 +4,22 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 @Entity
 @Data // hace por default los setters y getters
 @NoArgsConstructor
-public class Creature {
 
+
+public class Zone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long zone_id;
     private String name;
-    private String species;
-    private double size;
-    private int dangerLevel;
-    private String healthStatus;
+    private String description;
+    private int capacity;
 
-    @ManyToOne @JoinColumn(name = "zone_id")
-    private Zone zone;
+    @OneToMany(mappedBy = "zone")
+    private List<Creature> creatures;
+
 }
-
