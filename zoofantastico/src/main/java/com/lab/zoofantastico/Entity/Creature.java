@@ -1,12 +1,13 @@
-package Entity;
+package com.lab.zoofantastico.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data // Esto es opcional pueden usarlo o crear los getter y setters
+@Data // hace por default los setters y getters
 @NoArgsConstructor
 public class Creature {
 
@@ -19,8 +20,8 @@ public class Creature {
     private int dangerLevel;
     private String healthStatus;
 
-    //@ManyToOne
-    //@JoinColumn(name = "zone_id")
-    //private Zone zone;
+    @ManyToOne @JoinColumn(name = "zone_id")
+    @JsonBackReference //otorga al json como manejar la referencias evitando bucles
+    private Zone zone;
 }
 
