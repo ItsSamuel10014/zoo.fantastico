@@ -1,7 +1,7 @@
-package Services;
+package com.lab.zoofantastico.Services;
 
-import Entity.Zone;
-import Repository.ZoneRepository;
+import com.lab.zoofantastico.Entity.Zone;
+import com.lab.zoofantastico.Repository.ZoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

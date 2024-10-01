@@ -1,5 +1,6 @@
-package Entity;
+package com.lab.zoofantastico.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Creature {
     private String healthStatus;
 
     @ManyToOne @JoinColumn(name = "zone_id")
+    @JsonBackReference //otorga al json como manejar la referencias evitando bucles
     private Zone zone;
 }
 

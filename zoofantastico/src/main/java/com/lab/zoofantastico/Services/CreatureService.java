@@ -1,7 +1,7 @@
-package Services;
+package com.lab.zoofantastico.Services;
 
-import Entity.Creature;
-import Repository.CreatureRepository;
+import com.lab.zoofantastico.Entity.Creature;
+import com.lab.zoofantastico.Repository.CreatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

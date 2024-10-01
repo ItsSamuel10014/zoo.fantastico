@@ -1,7 +1,7 @@
-package Controller;
+package com.lab.zoofantastico.Controller;
 
-import Entity.Zone;
-import Services.ZoneService;
+import com.lab.zoofantastico.Entity.Zone;
+import com.lab.zoofantastico.Services.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
