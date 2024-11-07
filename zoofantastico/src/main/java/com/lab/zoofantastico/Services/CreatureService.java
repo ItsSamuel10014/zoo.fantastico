@@ -39,13 +39,14 @@ public class CreatureService {
         return creatureRepository.save(creature);
     }
 
-    public void deleteCreature(Long id) {
+    public boolean deleteCreature(Long id) {
         Creature creature = getCreatureById(id);
         if (!"critical".equals(creature.getHealthStatus())) {
             creatureRepository.delete(creature);
         } else {
             throw new IllegalStateException("Cannot delete a creature in critical health");
         }
+        return false;
     }
 
     private static class ResourceNotFoundException {
