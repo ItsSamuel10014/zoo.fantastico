@@ -80,7 +80,7 @@ public class ZoneServiceTest {
         doNothing().when(zoneRepository).delete(zone);
 
         boolean isDeleted = zoneService.deleteZone(1L);
-        assertTrue(isDeleted);
+        assertEquals(true, isDeleted);
         verify(zoneRepository, times(1)).delete(zone);
     }
 
