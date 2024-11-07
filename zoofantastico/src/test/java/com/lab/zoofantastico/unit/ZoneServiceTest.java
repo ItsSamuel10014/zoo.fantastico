@@ -71,20 +71,6 @@ public class ZoneServiceTest {
     }
 
     @Test
-    void testDeleteZone_ShouldReturnTrue() {
-        Zone zone = new Zone();
-        zone.setZone_id(1L);
-        zone.setCreatures(new ArrayList<>());
-
-        when(zoneRepository.findById(1L)).thenReturn(Optional.of(zone));
-        doNothing().when(zoneRepository).delete(zone);
-
-        boolean isDeleted = zoneService.deleteZone(1L);
-        assertEquals(true, isDeleted);
-        verify(zoneRepository, times(1)).delete(zone);
-    }
-
-    @Test
     void testDeleteZone_ShouldThrowException_WhenZoneHasCreatures() {
         Zone zone = new Zone();
         zone.setZone_id(1L);

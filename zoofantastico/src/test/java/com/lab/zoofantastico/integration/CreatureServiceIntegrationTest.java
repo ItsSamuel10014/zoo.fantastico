@@ -3,9 +3,11 @@ package com.lab.zoofantastico.integration;
 import com.lab.zoofantastico.Entity.Creature;
 import com.lab.zoofantastico.Repository.CreatureRepository;
 import com.lab.zoofantastico.Services.CreatureService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@ActiveProfiles("test")
 public class CreatureServiceIntegrationTest {
 
     @Autowired
@@ -22,6 +25,11 @@ public class CreatureServiceIntegrationTest {
 
     @Autowired
     private CreatureRepository creatureRepository;
+
+    @BeforeEach
+    void setUp() {
+        creatureRepository.deleteAll();
+    }
 
     @Test
     void testCreateCreature() {

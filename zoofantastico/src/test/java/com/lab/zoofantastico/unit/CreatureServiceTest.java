@@ -35,10 +35,17 @@ public class CreatureServiceTest {
     void testCreateCreature_ShouldReturnSavedCreature() {
         Creature creature = new Creature();
         creature.setName("Fénix");
+        creature.setSize(5);
+        creature.setDangerLevel(3);
+
         when(creatureRepository.save(any(Creature.class))).thenReturn(creature);
+
         Creature savedCreature = creatureService.createCreature(creature);
+
         assertNotNull(savedCreature);
         assertEquals("Fénix", savedCreature.getName());
+        assertEquals(5, savedCreature.getSize());
+        assertEquals(3, savedCreature.getDangerLevel());
     }
 
     @Test
@@ -122,7 +129,4 @@ public class CreatureServiceTest {
         String expectedMessage = "Invalid parameters: Danger level must be between 1 and 10";
         assertEquals(expectedMessage, exception.getMessage());
     }
-
-
-
 }

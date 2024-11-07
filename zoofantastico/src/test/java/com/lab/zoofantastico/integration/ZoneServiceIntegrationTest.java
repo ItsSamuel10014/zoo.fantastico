@@ -15,7 +15,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional
 @ActiveProfiles("test")
 public class ZoneServiceIntegrationTest {
 
