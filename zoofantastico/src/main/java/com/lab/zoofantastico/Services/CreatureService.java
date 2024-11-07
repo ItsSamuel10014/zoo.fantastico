@@ -17,6 +17,12 @@ public class CreatureService {
     }
 
     public Creature createCreature(Creature creature) {
+        if (creature.getSize() < 0) {
+            throw new IllegalArgumentException("Invalid parameters: Size must be non-negative");
+        }
+        if (creature.getDangerLevel() < 1 || creature.getDangerLevel() > 10) {
+            throw new IllegalArgumentException("Invalid parameters: Danger level must be between 1 and 10");
+        }
         return creatureRepository.save(creature);
     }
 
@@ -39,17 +45,19 @@ public class CreatureService {
         return creatureRepository.save(creature);
     }
 
-    public void deleteCreature(Long id) {
+    public boolean deleteCreature(Long id) {
         Creature creature = getCreatureById(id);
         if (!"critical".equals(creature.getHealthStatus())) {
             creatureRepository.delete(creature);
+            return true;
         } else {
             throw new IllegalStateException("Cannot delete a creature in critical health");
         }
     }
 
-    private static class ResourceNotFoundException {
+    private static class ResourceNotFoundException extends RuntimeException {
         public ResourceNotFoundException(String creatureNotFound) {
+            super(creatureNotFound);
         }
     }
 }

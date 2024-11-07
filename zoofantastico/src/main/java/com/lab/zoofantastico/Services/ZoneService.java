@@ -36,13 +36,14 @@ public class ZoneService {
         return zoneRepository.save(zone);
     }
 
-    public void deleteZone(Long id) {
+    public boolean deleteZone(Long id) {
         Zone zone = getZoneById(id);
         if (zone.getCreatures().isEmpty()) {
             zoneRepository.delete(zone);
         } else {
             throw new IllegalStateException("Cannot delete a zone with assigned creatures");
         }
+        return false;
     }
 
     public long getCreatureCount(Long zoneId) {
